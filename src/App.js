@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="container">
       <Cars />
-      <TrafficSignal />
+      {/* <TrafficSignal /> */}
     </div>
   );
 }
