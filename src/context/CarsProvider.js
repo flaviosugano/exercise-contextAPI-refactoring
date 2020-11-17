@@ -1,21 +1,38 @@
-const initialState = {
-  cars: {
-    red: false,
-    blue: false,
-    yellow: false,
-  },
-};
+import React from 'react';
+import Context from './CarsContext';
 
-function CarsProvider(state = initialState, action) {
-  switch (action.type) {
-    case MOVE_CAR:
-      return {
-        ...state,
-        cars: { ...state.cars, [action.car]: action.side }
-      };
-    default:
-      return state;
+class Provider extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      cars: {
+        red: false,
+        blue: false,
+        yellow: true,
+      }
+    }
+
+    this.moveCar = this.moveCar.bind(this);
+  }
+
+  moveCar(car, side) {
+    this.setState({ cars: { ...this.state.cars, [car]: side } })
+  }
+
+  render() {
+    const value = { 
+      ...this.state,
+      moveCar: this.moveCar,
+    }
+
+    const { children } = this.props;
+
+    return (
+      <Context.Provider value={value}>
+        {children}
+      </Context.Provider>
+    );
   }
 }
 
-export default CarsProvider;
+export default Provider;
