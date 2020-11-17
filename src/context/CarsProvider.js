@@ -1,14 +1,14 @@
 import React from 'react';
 import Context from './CarsContext';
 
-class Provider extends React.Component {
+class CarsProvider extends React.Component {
   constructor() {
     super()
     this.state = {
       cars: {
         red: false,
         blue: false,
-        yellow: true,
+        yellow: false,
       }
     }
 
@@ -35,4 +35,4 @@ class Provider extends React.Component {
   }
 }
 
-export default Provider;
+export default CarsProvider;
